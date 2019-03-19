@@ -11,6 +11,7 @@
                         <th>LastName</th>
                         <th>Age</th>
                         <th>Gender</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +23,9 @@
                                 <td><%= data[i].lastName %></td>
                                 <td><%= data[i].age %></td>
                                 <td><%= data[i].gender %></td>
+                                <td>
+                                <a href ="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                         <% } %>
                     <%} %>

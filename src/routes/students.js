@@ -5,7 +5,7 @@ const studentController = require('../controllers/studentController');
 
 router.get('/', studentController.list);
 router.post('/add', studentController.save);
-
+router.get('/delete/:id', studentController.delete);
 
 
 
