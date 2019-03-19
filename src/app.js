@@ -31,6 +31,8 @@ app.use(myConnection(mysql, {
     database: 'dbschool'
 }, 'single'));
 
+app.use(express.urlencoded({extended: false})); //Recibir el objeto de HTML
+
 //routes
 app.use('/', studentsRoutes);
 

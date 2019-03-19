@@ -8,12 +8,22 @@ controller.list =  (req, res) =>{
             }
             console.log(students);
             res.render('students',{
-                data: students
+                data: students  
             });
         });
     });
 };
 
 
+controller.save = (req, res) =>{
+    //console.log(req.body);
+    const data = req.body;
+    req.getConnection((err, conn) =>{
+        conn.query('INSERT INTO students set ?', [data], (err, student)=>{
+            console.log(student);
+            res.redirected('/');
+        });
+    })
+};
 
-module.exports = controller;
+module.exports = controller; 
