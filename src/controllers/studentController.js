@@ -26,6 +26,27 @@ controller.save = (req, res) =>{
     })
 };
 
+controller.edit = (req, res) =>{
+    const { id } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM students WHERE id = ?', [id], (err, student) =>{
+            res.render('student_edit', {
+                data: student[0]
+            });
+        });
+    });
+};
+
+controller.update = (req, res) =>{
+    const { id } = req.params;
+    const newStudent = req.body;
+    req.getConnection((err, conn) =>{
+        conn.query('UPDATE students set ? WHERE id = ?', [newStudent, id], (err, rows) =>{
+            res.redirect('/');
+        })
+    });
+};
+
 controller.delete = (req, res) =>{
     const { id } = req.params;
     req.getConnection((err, conn) => {
